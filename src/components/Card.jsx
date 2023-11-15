@@ -1,10 +1,10 @@
 import "../style/card.css";
 
-export const Card = ({ nombre, descripcion, precio }) => {
-  const clickAgregar = (producto) => {
-    console.log("Click en boton");
-  };
+export const Card = ({ productoId,nombre, descripcion, precio, handleClickAgregar }) => {
 
+  const clickAgregar = () => {
+    handleClickAgregar(productoId);
+  };
   return (
     <div className="tarjeta">
       <img
