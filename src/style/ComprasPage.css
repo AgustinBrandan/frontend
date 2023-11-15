@@ -1,0 +1,44 @@
+/* Estilos para ComprasPage */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  /* Estilos para la tarjeta (Card) */
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 15px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card h2 {
+    color: #333;
+  }
+  
+  .card p {
+    color: #555;
+  }
+  
+  .card .precio {
+    color: #e44d26; /* Color naranja para el precio */
+    font-weight: bold;
+  }

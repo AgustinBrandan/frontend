@@ -1,0 +1,56 @@
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin: 10px;
+}
+
+.tarjeta-imagen {
+  width: 100%; /* La imagen ocupará el 100% del ancho de la tarjeta */
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.boton-agregar {
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tarjeta-contenido {
+  flex: 1;
+  padding: 10px;
+}
+
+.tarjeta-nombre {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.tarjeta-descripcion {
+  margin: 0;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.tarjeta-precio {
+  margin: 0;
+  font-weight: bold;
+  color: #e44d26;
+}
+
+/* Efecto de transición al pasar el ratón */
+.tarjeta:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
