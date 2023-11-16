@@ -4,6 +4,7 @@ import { CarritoContext } from './CarritoContext';
 export const CarritoProvider = ({ children }) => {
   const [carrito, setCarrito] = useState();
 
+  
   const cargarCarrito = async () => {
     try {
         const response = await fetch(`http://localhost:5000/api/carrito`, {
@@ -45,6 +46,8 @@ export const CarritoProvider = ({ children }) => {
       console.error('Error al agregar el producto al carrito:', error);
     }
   };
+
+  
 
   return (
     <CarritoContext.Provider

@@ -10,7 +10,6 @@ const ComprasPage = () => {
   const { agregarProducto } = useContext(CarritoContext);
 
   const handleClickAgregar = (producto) => {
-    console.log(producto)
     agregarProducto(producto, 1); 
   };
 
