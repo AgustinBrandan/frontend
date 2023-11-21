@@ -29,7 +29,7 @@ export const CarritoProvider = ({ children }) => {
         },
       });
       const data = await response.json();
-      setCarrito(data); // Ajusta el nombre de la propiedad según la respuesta real
+      setCarrito(data);
     } catch (error) {
       console.error(error);
     }

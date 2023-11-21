@@ -1,11 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { CarritoContext } from "../context/CarritoContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/CarritoPage.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export const CarritoPage = () => {
-  const { carrito, eliminarProducto, eliminarCarrito, actualizarProducto } =
-    useContext(CarritoContext); // Agrega la función eliminarProducto
+  const {
+    carrito,
+    eliminarProducto,
+    eliminarCarrito,
+    actualizarProducto,
+  } = useContext(CarritoContext);
 
   if (!carrito.productos || carrito.productos.length === 0) {
     return <p>Carrito Vacío.</p>;
@@ -23,7 +29,7 @@ export const CarritoPage = () => {
     const nuevaCantidad = cantidadActualProducto - 1;
     actualizarProducto(productoId, nuevaCantidad);
   };
-  
+
   const BtnAgregarProducto = (productoId, cantidadActualProducto) => {
     const nuevaCantidad = cantidadActualProducto + 1;
     actualizarProducto(productoId, nuevaCantidad);
@@ -43,37 +49,52 @@ export const CarritoPage = () => {
           </tr>
         </thead>
         <tbody>
-          {carrito.productos.map((producto) => (
-            <tr key={producto._id}>
-              <td>{producto.nombreProducto}</td>
-              <td>{producto.precioUnitario}</td>
-              <td>{producto.cantidad}</td>
-              <td>{producto.precioTotalProducto}</td>
-              <td>
-                <button
-                  className="btn btn-outline-primary"
-                  onClick={() => BtnEliminarProducto(producto.producto,producto.cantidad)}
-                >
-                  -
-                </button>
-                <button
-                  className="btn btn-outline-primary"
-                  onClick={() => BtnAgregarProducto(producto.producto,producto.cantidad)}
-                >
-                  +
-                </button>
-              </td>
-              <td>
-                <button
-                  type="button"
-                  className="btn btn-danger"
-                  onClick={() => handleEliminarProducto(producto.producto)}
-                >
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-          ))}
+          {carrito.productos.map((producto) => {
+            if (producto.cantidad > 0) {
+              return (
+                <tr key={producto._id}>
+                  <td>{producto.nombreProducto}</td>
+                  <td>{producto.precioUnitario}</td>
+                  <td>{producto.cantidad}</td>
+                  <td>{producto.precioTotalProducto}</td>
+                  <td>
+                    <button
+                      className="btn btn-outline-primary"
+                      onClick={() =>
+                        BtnEliminarProducto(
+                          producto.producto,
+                          producto.cantidad
+                        )
+                      }
+                    >
+                      <FontAwesomeIcon icon={faMinus} />
+                    </button>
+                    <button
+                      className="btn btn-outline-primary"
+                      onClick={() =>
+                        BtnAgregarProducto(
+                          producto.producto,
+                          producto.cantidad
+                        )
+                      }
+                    >
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      onClick={() => handleEliminarProducto(producto.producto)}
+                    >
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              );
+            }
+            return null;
+          })}
         </tbody>
       </table>
 
